@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<<link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
->
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feliz Aniversário, Ana Júlia!</title>
   <style>
     body {
       font-family: 'Comfortaa', sans-serif;
-      background: linear-gradient(to bottom right, #e0f7fa, #ce93d8​); /* Azul claro para roxo claro */
+      background: linear-gradient(to bottom right, #e0f7fa, #ce93d8); /* Azul claro para roxo claro */
       color: #333;
       margin: 0;
       padding: 0;
@@ -41,6 +41,7 @@
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       transition: transform 0.3s;
+      cursor: pointer; /* Indica que é clicável */
     }
     .galeria img:hover {
       transform: scale(1.1);
@@ -52,6 +53,48 @@
       margin: 40px;
       font-size: 0.9em;
       color: #888;
+    }
+
+    /* Estilos para a lightbox */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none; /* Inicialmente escondido */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Para ficar acima de todo o conteúdo */
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .lightbox-content img, .lightbox-content video {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 5px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 2em;
+      font-weight: bold;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .lightbox-close:hover {
+      opacity: 1;
+    }
+    .galeria-item {
+      cursor: pointer; /* Indica que é clicável */
     }
   </style>
 </head>
@@ -71,13 +114,90 @@
   </div>
 
   <div class="galeria">
-    <!-- Substitua os links abaixo pelas fotos que quiser usar -->
-    <img src="ChatGPT Image 31 de mar. de 2025, 15_20_25.png" alt="Foto 1">
-    <img src="ChatGPT Image 31 de mar. de 2025, 15_28_28.png" alt="Foto 2">
-    <img src="WhatsApp Image 2025-03-31 at 15.15.08 (1).jpeg" alt="Foto 3">
-    <img src="WhatsApp Image 2025-03-31 at 15.15.08.jpeg" alt="Foto 4">
-    <img src="WhatsApp Image 2025-03-31 at 15.15.09(3).jpeg" alt="Foto 5">
-    <img src="WhatsApp Image 2025-03-31 at 15.15.09.jpeg" alt="Foto 6">
+    <div class="galeria-item">
+      <img src="ChatGPT Image 31 de mar. de 2025, 15_20_25.png" alt="Foto 1" data-type="image" data-src="ChatGPT Image 31 de mar. de 2025, 15_20_25.png">
+    </div>
+    <div class="galeria-item">
+      <img src="ChatGPT Image 31 de mar. de 2025, 15_28_28.png" alt="Foto 2" data-type="image" data-src="ChatGPT Image 31 de mar. de 2025, 15_28_28.png">
+    </div>
+    <div class="galeria-item">
+      <img src="WhatsApp Image 2025-03-31 at 15.15.08 (1).jpeg" alt="Foto 3" data-type="image" data-src="WhatsApp Image 2025-03-31 at 15.15.08 (1).jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="WhatsApp Image 2025-03-31 at 15.15.08.jpeg" alt="Foto 4" data-type="image" data-src="WhatsApp Image 2025-03-31 at 15.15.08.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="video_placeholder.png" alt="Vídeo 5" data-type="video" data-src="1.mp4">
+    </div>
+    <div class="galeria-item">
+      <img src="WhatsApp Image 2025-03-31 at 15.15.09.jpeg" alt="Foto 6" data-type="image" data-src="WhatsApp Image 2025-03-31 at 15.15.09.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="video_placeholder.png" alt="Vídeo 7" data-type="video" data-src="2.mp4">
+    </div>
+    <div class="galeria-item">
+      <img src="video_placeholder.png" alt="Vídeo 8" data-type="video" data-src="3.mp4">
+    </div>
+    <div class="galeria-item">
+      <img src="video_placeholder.png" alt="Vídeo 9" data-type="video" data-src="4.mp4">
+    </div>
+    <div class="galeria-item">
+      <img src="10.jpeg" alt="Foto 10" data-type="image" data-src="10.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="11.jpeg" alt="Foto 11" data-type="image" data-src="11.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="12.jpeg" alt="Foto 12" data-type="image" data-src="12.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="13.jpeg" alt="Foto 13" data-type="image" data-src="13.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="14.jpeg" alt="Foto 14" data-type="image" data-src="14.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="15.jpeg" alt="Foto 15" data-type="image" data-src="15.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="16.jpeg" alt="Foto 16" data-type="image" data-src="16.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="10.jpeg" alt="Foto 17" data-type="image" data-src="10.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="10.jpeg" alt="Foto 18" data-type="image" data-src="10.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="9.jpeg" alt="Foto 19" data-type="image" data-src="9.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="8.jpeg" alt="Foto 20" data-type="image" data-src="8.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="7.jpeg" alt="Foto 21" data-type="image" data-src="7.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="6.jpeg" alt="Foto 22" data-type="image" data-src="6.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="5.jpeg" alt="Foto 23" data-type="image" data-src="5.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="4.jpeg" alt="Foto 24" data-type="image" data-src="4.jpeg">
+    </div>
+    <div class="galeria-item">
+      <img src="video_placeholder.png" alt="Vídeo 25" data-type="video" data-src="4.mp4">
+    </div>
+    <div class="galeria-item">
+      <img src="video_placeholder.png" alt="Vídeo 26" data-type="video" data-src="3.mp4">
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-content">
+      </div>
   </div>
 
   <audio autoplay loop>
@@ -88,5 +208,51 @@
   <footer>
     Feito com carinho para Ana Júlia
   </footer>
+
+  <script>
+    const galleryItems = document.querySelectorAll('.galeria-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxContent = document.querySelector('.lightbox-content');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const type = item.querySelector('img').dataset.type;
+        const src = item.querySelector('img').dataset.src;
+
+        lightboxContent.innerHTML = ''; // Limpa o conteúdo anterior
+
+        if (type === 'image') {
+          const img = document.createElement('img');
+          img.src = src;
+          lightboxContent.appendChild(img);
+        } else if (type === 'video') {
+          const video = document.createElement('video');
+          video.src = src;
+          video.controls = true; // Adiciona controles de reprodução
+          video.autoplay = true; // Opcional: começar a reproduzir automaticamente
+          lightboxContent.appendChild(video);
+        }
+
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Impede o scroll da página principal
+      });
+    });
+
+    lightboxClose.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+      lightboxContent.innerHTML = ''; // Limpa o conteúdo ao fechar
+      document.body.style.overflow = 'auto'; // Restaura o scroll da página
+    });
+
+    lightbox.addEventListener('click', (event) => {
+      // Fecha a lightbox se o clique for fora do conteúdo
+      if (event.target === lightbox) {
+        lightbox.style.display = 'none';
+        lightboxContent.innerHTML = ''; // Limpa o conteúdo ao fechar
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
 </body>
 </html>
