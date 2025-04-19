@@ -106,11 +106,35 @@
       font-weight: bold;
       color: #6a1b9a;
     }
+    
+    /* Estilos para o botão de play */
+    #botao-play {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #6a1b9a;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    #botao-play:hover {
+      background-color: #52147a;
+    }
   </style>
 </head>
 <body>
   <h1>Feliz Aniversário, Princesa!</h1>
 
+  <audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+<button id="botao-play">Tocar Música</button>
+  
   <div class="mensagem">
     <p>Olá mi lady,</p>
     <p>Quem diria que, naquele evento de física, conferências e cafezinhos, apresentações, pôsteres e aquele show que teve, Deus prepararia o melhor encontro da minha vida? Você, com esse teu sorriso que desarma qualquer teorema, chegou do nada… e virou tudo.</p>
@@ -296,13 +320,6 @@
     <div class="lightbox-content">
       </div>
   </div>
-
-  <audio id="musica" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio.
-</audio>
-
-<button id="botao-play">Tocar Música</button>
 
   <footer>
     Feito com carinho para Ana Julia
