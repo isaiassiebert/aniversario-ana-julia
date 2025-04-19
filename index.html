@@ -96,22 +96,35 @@
     .galeria-item {
       cursor: pointer; /* Indica que é clicável */
     }
+        /* Estilos para o cronômetro */
+    #cronometro {
+      font-size: 1.1em;
+      margin-top: 20px;
+      color: #555;
+    }
+    #tempo-decorrido {
+      font-weight: bold;
+      color: #6a1b9a;
+    }
   </style>
 </head>
 <body>
   <h1>Feliz Aniversário, Ana Julia!</h1>
 
   <div class="mensagem">
-    <p>Querida Ana Júlia,</p>
-    <p>Quem diria que, em meio àqueles dias, naquele evento de física, conferências e cafezinhos, apresentações, pôsteres e aquele show que teve, Deus prepararia o melhor encontro da minha vida? Você, com esse teu sorriso que desarma qualquer teorema, chegou do nada… e virou tudo.</p>
-    <p>O engraçado, até interessante, é que eu fiquei com medo de te mandar mensagem no dia seguinte, e aí começamos a conversar, fomos no Cristo Redentor e saímos naquele dia (como estávamos ansiosos).</p>
-    <p>Desde o SNEF, minha equação favorita tem sido: você + eu + Deus = algo que não consigo achar explicação. A cada conversa, a cada risada, a cada oração compartilhada, eu tenho mais certeza de que me apaixono mais por você — e talvez até com uma pitada de humor, porque olha… só Deus mesmo pra unir duas cabeças cheias de pensamentos e sonhos.</p>
+    <p>Olá mi lady,</p>
+    <p>Quem diria que, naquele evento de física, conferências e cafezinhos, apresentações, pôsteres e aquele show que teve, Deus prepararia o melhor encontro da minha vida? Você, com esse teu sorriso que desarma qualquer teorema, chegou do nada… e virou tudo.</p>
+    <p>O engraçado, até interessante, é que eu fiquei com medo de te mandar mensagem no dia seguinte, e aí começamos a conversar, fomos no Cristo Redentor e saímos naquele dia (como estávamos ansiosos). Muitas vezes me lembro daquela sexta (24), como você me disse certa vez, em cada conversa nossa com aquele gelato, eu te pedia em namoro, era só questão de tempo - na verdade uns minutos</p>
+    <p>Desde o SNEF, minha equação favorita tem sido: você + eu + Deus = algo que não consigo achar explicação. A cada conversa, a cada risada, a cada oração compartilhada, eu tenho mais certeza de que me apaixono mais por você — pensando bem, é até engraçado, porque olha… só Deus mesmo pra unir duas cabeças cheias de pensamentos e sonhos.</p>
     <p>Você é resposta de oração, é poesia que dança no meu dia, é arte viva com pinceladas de fé. Eu amo como você olha pro mundo com esperança, como cuida da natureza, como crê, como ama. E amo ainda mais o fato de que posso te chamar de minha namorada — aquela com quem quero viver cada capítulo, cada milagre do cotidiano.</p>
     <p>Hoje é seu aniversário, mas quem ganhou o presente fui eu, no dia em que você entrou na minha vida - o que por coincidência nos conhecemos no dia 20 de janeiro. Que Deus continue iluminando teus passos, teus planos e esse coração lindo que me faz agradecer todos os dias.</p>
     <p>Feliz vida, minha princesa. Que ela siga cheia da graça de Deus… e dos nossos planos juntos, se Ele quiser (e eu acho que Ele quer 😄💛).</p>
     <p>Com amor,<br>
     Isaias Siebert, seu príncipe.</p>
   </div>
+  <div id="cronometro">
+  Tempo desde o nosso namoro: <span id="tempo-decorrido"></span>
+</div>
 
  <div class="galeria">
   <div class="galeria-item">
@@ -253,6 +266,29 @@
         document.body.style.overflow = 'auto';
       }
     });
+    unction atualizarCronometro() {
+      const dataEncontro = new Date('2025-01-24T19:15:00-03:00'); // Data e hora do encontro (UTC-3 para Brasília)
+      const agora = new Date();
+      const diferenca = agora.getTime() - dataEncontro.getTime();
+
+      if (diferenca > 0) {
+        const segundos = Math.floor((diferenca / 1000) % 60);
+        const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+        const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+
+        const tempoDecorrido = `${dias} dias, ${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+        document.getElementById('tempo-decorrido').textContent = tempoDecorrido;
+      } else {
+        document.getElementById('tempo-decorrido').textContent = "O encontro ainda não aconteceu!";
+      }
+    }
+
+    // Atualiza o cronômetro a cada segundo
+    setInterval(atualizarCronometro, 1000);
+
+    // Chama a função uma vez para exibir o valor inicial
+    atualizarCronometro();
   </script>
 </body>
 </html>
